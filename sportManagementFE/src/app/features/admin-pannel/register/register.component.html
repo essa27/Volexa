@@ -1,0 +1,54 @@
+<!-- register.component.html -->
+<div class="register-page">
+  <div class="register-container">
+    <h2>{{ 'REGISTER.TITLE' | translate }}</h2>
+
+    <div class="form-group">
+      <input
+        type="text"
+        [placeholder]="'REGISTER.USERNAME' | translate"
+        [(ngModel)]="registerData.username"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="email"
+        [placeholder]="'REGISTER.EMAIL' | translate"
+        [(ngModel)]="registerData.email"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        [placeholder]="'REGISTER.PASSWORD' | translate"
+        [(ngModel)]="registerData.password"
+      />
+      <small style="cursor: pointer;" (click)="togglePassword()">
+        👁 {{ 'REGISTER.TOGGLE_PASSWORD' | translate }}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <select [(ngModel)]="registerData.role">
+        <option disabled selected>
+          {{ 'REGISTER.SELECT_ROLE' | translate }}
+        </option>
+        <option value="ATHLETE">
+          {{ 'REGISTER.ROLE_ATHLETE' | translate }}
+        </option>
+        <option value="COACH">
+          {{ 'REGISTER.ROLE_COACH' | translate }}
+        </option>
+        <option value="ADMIN">
+          {{ 'REGISTER.ROLE_ADMIN' | translate }}
+        </option>
+      </select>
+    </div>
+
+    <button class="register-btn" (click)="onRegister()">
+      {{ 'REGISTER.SUBMIT' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,355 @@
+:root {
+  --white: #ffffff;
+  --yellow: #ffe220;
+  --blue: #55b0ff;
+  --black: #000000;
+  --light-grey: #f8f8f8;
+  --red: #f44336;
+}
+
+.athlete-list-container {
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  background: #f5f7fb;
+}
+
+/* Top Bar Layout */
+.top-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 1rem 0;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Search */
+.search-wrapper {
+  .search-bar {
+    width: 320px;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #55B0FF;
+      box-shadow: 0 0 0 4px rgba(85, 176, 255, 0.2);
+    }
+  }
+}
+
+/* Add Button */
+.add-btn-wrapper {
+  .add-btn {
+    background-color: #55B0FF;
+    color: white;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #55B0FF;
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* Add Athlete Form */
+.add-athlete-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.5s ease;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.88rem;
+      color: #333;
+    }
+
+    input,
+    select {
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+      background-color: #f9f9f9;
+      transition: 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #55b0ff;
+        box-shadow: 0 0 0 2px rgba(85, 176, 255, 0.2);
+        background-color: #fff;
+      }
+    }
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+
+    .save-btn {
+      background-color: #55B0FF;
+      color: white;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #55B0FF;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* Athlete Cards */
+.athlete-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.athlete-card {
+  width: 320px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.athlete-photo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Athlete Info */
+.athlete-info {
+  margin-bottom: 1rem;
+
+  h3 {
+    margin: 0.3rem 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1c1c1c;
+  }
+
+  p {
+    margin: 0.35rem 0;
+    font-size: 0.95rem;
+
+    strong {
+      color: #333;
+      font-weight: 600;
+    }
+  }
+}
+
+.editable-fields p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    flex: 1;
+    margin-left: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  input[readonly] {
+    background-color: #f7f7f7;
+    border-color: #eee;
+    cursor: not-allowed;
+  }
+}
+
+/* Badges */
+.level-badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-top: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.senior {
+  background-color: #FFE220;
+  color: #000;
+}
+
+.junior {
+  background-color: #55B0FF;
+  color: #fff;
+}
+
+/* Actions */
+.athlete-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+.view-btn,
+.save-btn,
+.delete-btn {
+  flex: 1 1 auto;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px) scale(1.03);
+  }
+}
+
+.view-btn {
+  background-color:#FFE220;
+  color: #000;
+}
+
+.save-btn {
+  background-color: #55b0ff;
+  color: white;
+}
+
+.delete-btn {
+  background-color:#FFE220;
+  color: black;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Stylish File Upload Button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  color: white;
+  background-color: #55B0FF;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: #3fa0f5;
+  }
+}
+
+.photo-preview {
+  margin-top: 10px;
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-end;
+  .save-btn {
+    background-color: #55B0FF;
+    color: var(--white);
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+      background-color: #3fa0f5;
+      transform: translateY(-2px);
+    }
+
+    mat-icon {
+      font-size: 20px;
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,291 @@
+<div class="athlete-profile-container animate-in" [ngClass]="{ 'edit-mode': isEditMode }">
+  <button class="back-btn" (click)="goBack()">
+    {{ 'ATHLETE.BACK' | translate }}
+  </button>
+
+  <!-- Header -->
+  <div class="profile-header">
+    <div class="image-container" [class.editable]="isCoachOrAdmin() && isEditMode">
+      <img
+        [src]="imagePreviewUrl || getPhotoUrl()"
+        alt="{{ athlete.name }}"
+        class="avatar-img"
+        (error)="onImageError($event)"
+      />
+      <label class="photo-overlay" *ngIf="isCoachOrAdmin() && isEditMode">
+        {{ 'ATHLETE.CHANGE_PHOTO' | translate }}
+        <input type="file" (change)="onFileSelected($event)" hidden />
+      </label>
+    </div>
+
+    <div class="basic-info">
+      <div class="name-and-button">
+        <h2 class="athlete-name">{{ athlete.name }}</h2>
+        <button
+          *ngIf="isCoachOrAdmin()"
+          class="edit-toggle-btn"
+          (click)="toggleEdit()"
+        >
+          {{ isEditMode
+            ? ('ATHLETE.SAVE' | translate)
+            : ('ATHLETE.EDIT_PROFILE' | translate) }}
+        </button>
+      </div>
+
+      <div class="form-row">
+        <label>{{ 'ATHLETE.POSITION' | translate }}</label>
+        <select
+          [(ngModel)]="athlete.position"
+          [disabled]="!isCoachOrAdmin() || !isEditMode"
+        >
+          <option value="Setter">{{ 'ATHLETE.POSITIONS.SETTER' | translate }}</option>
+          <option value="Libero">{{ 'ATHLETE.POSITIONS.LIBERO' | translate }}</option>
+          <option value="Middle">{{ 'ATHLETE.POSITIONS.MIDDLE' | translate }}</option>
+          <option value="Hitter">{{ 'ATHLETE.POSITIONS.HITTER' | translate }}</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.TEAM' | translate }}</label>
+        <input
+          [(ngModel)]="athlete.team"
+          type="text"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.LEVEL' | translate }}</label>
+        <select
+          [(ngModel)]="athlete.level"
+          [disabled]="!isCoachOrAdmin() || !isEditMode"
+        >
+          <option value="Junior">{{ 'ATHLETE.LEVEL_JUNIOR' | translate }}</option>
+          <option value="Senior">{{ 'ATHLETE.LEVEL_SENIOR' | translate }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div class="profile-details">
+    <!-- Personal Info -->
+    <div class="info-block">
+      <h3>{{ 'ATHLETE.PERSONAL_INFO' | translate }}</h3>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.AGE' | translate }}</label>
+        <input
+          type="number"
+          [(ngModel)]="athlete.age"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.HEIGHT' | translate }}</label>
+        <div class="input-with-unit">
+          <input
+            type="number"
+            [(ngModel)]="athlete.height"
+            [readonly]="!isCoachOrAdmin() || !isEditMode"
+          /><span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.WEIGHT' | translate }}</label>
+        <div class="input-with-unit">
+          <input
+            type="number"
+            [(ngModel)]="athlete.weight"
+            [readonly]="!isCoachOrAdmin() || !isEditMode"
+          /><span class="unit">kg</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.EMAIL' | translate }}</label>
+        <input
+          type="email"
+          [(ngModel)]="athlete.email"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+    </div>
+
+    <!-- Attendance -->
+    <div class="info-block">
+      <h3>{{ 'ATHLETE.ATTENDANCE_TITLE' | translate }}</h3>
+      <div class="weekly-breakdown">
+        <div *ngFor="let week of weeks" class="form-row week-row">
+          <label>{{ ('ATHLETE.' + week.label) | translate }}</label>
+          <div class="input-pair">
+            <input
+              type="number"
+              min="0"
+              [(ngModel)]="week.attended"
+              (input)="updateMonthlyAttendance()"
+              [readonly]="!isCoachOrAdmin() || !isEditMode"
+            /> /
+            <input
+              type="number"
+              min="1"
+              [(ngModel)]="week.total"
+              (input)="updateMonthlyAttendance()"
+              [readonly]="!isCoachOrAdmin() || !isEditMode"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.MONTHLY_VALUE' | translate }}</label>
+        <div class="input-with-unit">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            [(ngModel)]="athlete.attendance"
+            readonly
+          /><span class="unit">%</span>
+        </div>
+      </div>
+      <div
+        class="radial-ring"
+        [style.background]="'conic-gradient(#ffd600 ' + athlete.attendance + '%, #e0e0e0 0)'"
+      >
+        {{ athlete.attendance }}%
+      </div>
+      <div class="chart-wrapper" *ngIf="performanceChartData">
+        <canvas
+          baseChart
+          [data]="performanceChartData"
+          [options]="chartOptions"
+          [type]="performanceChartType"
+        ></canvas>
+      </div>
+    </div>
+
+    <!-- Medical Section -->
+    <div *ngIf="isCoachOrAdmin()" class="info-block medical-section">
+      <h3>{{ 'ATHLETE.MEDICAL_TITLE' | translate }}</h3>
+      <p>{{ 'ATHLETE.MEDICAL_DESC' | translate }}</p>
+      <div class="custom-file-label" *ngIf="isEditMode">
+        <button class="file-btn" (click)="medicalFileInput?.click()">
+          {{ 'ATHLETE.CHOOSE_FILE' | translate }}
+        </button>
+        <span class="file-name">
+          {{ selectedMedicalFile?.name || ('ATHLETE.NO_FILE' | translate) }}
+        </span>
+        <input
+          #medicalFileInput
+          type="file"
+          (change)="onMedicalFileSelected($event)"
+          hidden
+        />
+      </div>
+      <ul class="file-list" *ngIf="athlete.medicalDocumentUrl">
+        <li *ngIf="athlete.medicalDocumentUrl.endsWith('.pdf')">
+          <a
+            [href]="getDocumentUrl(athlete.medicalDocumentUrl, 'medical')"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ 'ATHLETE.VIEW_MEDICAL' | translate }}
+          </a>
+        </li>
+        <li *ngIf="!athlete.medicalDocumentUrl.endsWith('.pdf')">
+          <a
+            [href]="getDocumentUrl(athlete.medicalDocumentUrl, 'medical')"
+            [download]="athlete.medicalDocumentUrl"
+            rel="noopener"
+          >
+            {{ 'ATHLETE.DOWNLOAD_MEDICAL' | translate }}
+          </a>
+        </li>
+        <li *ngIf="isCoachOrAdmin()">
+          <button (click)="removeMedicalDocument()">
+            {{ 'ATHLETE.REMOVE_MEDICAL' | translate }}
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contract Section -->
+    <div *ngIf="isCoachOrAdmin()" class="info-block contract-section">
+      <h3>{{ 'ATHLETE.CONTRACT_TITLE' | translate }}</h3>
+      <p>{{ 'ATHLETE.CONTRACT_DESC' | translate }}</p>
+      <div class="custom-file-label" *ngIf="isEditMode">
+        <button class="file-btn" (click)="contractFileInput?.click()">
+          {{ 'ATHLETE.CHOOSE_FILE' | translate }}
+        </button>
+        <span class="file-name">
+          {{ selectedContract?.name || ('ATHLETE.NO_FILE' | translate) }}
+        </span>
+        <input
+          #contractFileInput
+          type="file"
+          (change)="onContractSelected($event)"
+          hidden
+        />
+      </div>
+      <ul class="file-list" *ngIf="athlete.contractDocumentUrl">
+        <li *ngIf="athlete.contractDocumentUrl.endsWith('.pdf')">
+          <a
+            [href]="getDocumentUrl(athlete.contractDocumentUrl, 'contracts')"
+            target="_blank" rel="noopener noreferrer"
+          >
+            {{ 'ATHLETE.VIEW_CONTRACT' | translate }}
+          </a>
+        </li>
+        <li *ngIf="!athlete.contractDocumentUrl.endsWith('.pdf')">
+          <a
+            [href]="getDocumentUrl(athlete.contractDocumentUrl, 'contracts')"
+            [download]="athlete.contractDocumentUrl"
+            rel="noopener"
+          >
+            {{ 'ATHLETE.DOWNLOAD_CONTRACT' | translate }}
+          </a>
+        </li>
+        <li *ngIf="isCoachOrAdmin()">
+          <button (click)="removeContractDocument()">
+            {{ 'ATHLETE.REMOVE_CONTRACT' | translate }}
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Match Performance -->
+    <div class="info-block performance-stats-section">
+      <h3>{{ 'ATHLETE.PERFORMANCE_TITLE' | translate }}</h3>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.MATCHES_PLAYED' | translate }}</label>
+        <input
+          type="number"
+          [(ngModel)]="athlete.matchesPlayed"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.POINTS' | translate }}</label>
+        <input
+          type="number"
+          [(ngModel)]="athlete.points"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.BLOCKS' | translate }}</label>
+        <input
+          type="number"
+          [(ngModel)]="athlete.blocks"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+      <div class="form-row">
+        <label>{{ 'ATHLETE.SERVES' | translate }}</label>
+        <input
+          type="number"
+          [(ngModel)]="athlete.serves"
+          [readonly]="!isCoachOrAdmin() || !isEditMode"
+        />
+      </div>
+    </div>
+
+    <div class="scroll-down-arrow" (click)="scrollToBottom()">⬇</div>
+  </div>
+</div>

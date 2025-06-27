@@ -1,0 +1,90 @@
+<div class="score-background">
+  <div class="score-wrapper">
+    <!-- Score Table -->
+    <table mat-table [dataSource]="scores" class="scoreboard-table mat-elevation-z8">
+      <!-- Date -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>{{ 'SCORES.DATE' | translate }}</th>
+        <td mat-cell *matCellDef="let match">{{ match.date }}</td>
+      </ng-container>
+
+      <!-- Teams -->
+      <ng-container matColumnDef="teams">
+        <th mat-header-cell *matHeaderCellDef>{{ 'SCORES.TEAMS' | translate }}</th>
+        <td mat-cell *matCellDef="let match">
+          <ng-container *ngIf="match.isEditing && isCoachOrAdmin; else viewTeams">
+            <input [(ngModel)]="match.teamA" [placeholder]="'SCORES.PLACEHOLDER_TEAM_A' | translate" /> vs
+            <input [(ngModel)]="match.teamB" [placeholder]="'SCORES.PLACEHOLDER_TEAM_B' | translate" />
+          </ng-container>
+          <ng-template #viewTeams>
+            {{ match.teamA }} vs {{ match.teamB }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Points -->
+      <ng-container matColumnDef="points">
+        <th mat-header-cell *matHeaderCellDef>{{ 'SCORES.POINTS' | translate }}</th>
+        <td mat-cell *matCellDef="let match">
+          <ng-container *ngIf="match.isEditing && isCoachOrAdmin; else viewPoints">
+            <input [(ngModel)]="match.pointsA" type="number" size="2" /> -
+            <input [(ngModel)]="match.pointsB" type="number" size="2" />
+          </ng-container>
+          <ng-template #viewPoints>
+            {{ match.pointsA }} - {{ match.pointsB }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Sets -->
+      <ng-container matColumnDef="sets">
+        <th mat-header-cell *matHeaderCellDef>{{ 'SCORES.SETS' | translate }}</th>
+        <td mat-cell *matCellDef="let match">
+          <ng-container *ngIf="match.isEditing && isCoachOrAdmin; else viewSets">
+            <input [(ngModel)]="match.setsA" type="number" size="2" /> -
+            <input [(ngModel)]="match.setsB" type="number" size="2" />
+          </ng-container>
+          <ng-template #viewSets>
+            {{ match.setsA }} - {{ match.setsB }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Actions -->
+      <ng-container *ngIf="isCoachOrAdmin" matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{ 'SCORES.ACTIONS' | translate }}</th>
+        <td mat-cell *matCellDef="let match">
+          <div class="action-buttons">
+            <button *ngIf="!match.isEditing" class="button-edit" (click)="editMatch(match)">
+              {{ 'SCORES.EDIT' | translate }}
+            </button>
+            <button *ngIf="match.isEditing" class="button-save" (click)="saveMatch(match)">
+              {{ 'SCORES.SAVE' | translate }}
+            </button>
+            <button *ngIf="match.isEditing" class="button-delete" (click)="deleteMatch(match)">
+              {{ 'SCORES.DELETE' | translate }}
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; trackBy: trackByFn"></tr>
+
+      <!-- No Data Row -->
+      <tr *ngIf="scores.length === 0">
+        <td [attr.colspan]="displayedColumns.length" class="no-data-cell">
+          {{ 'SCORES.NO_DATA' | translate }}
+        </td>
+      </tr>
+    </table>
+
+    <!-- Add Match Button -->
+    <div *ngIf="isCoachOrAdmin" class="add-match">
+      <button class="button-add" (click)="addMatch()">
+        + {{ 'SCORES.ADD_MATCH' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

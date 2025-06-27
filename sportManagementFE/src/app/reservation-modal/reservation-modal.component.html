@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'FORM.TITLE' | translate }}</mat-label>
+      <input matInput formControlName="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'FORM.DATE' | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'FORM.START_TIME' | translate }}</mat-label>
+      <input matInput type="time" formControlName="startTime" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'FORM.END_TIME' | translate }}</mat-label>
+      <input matInput type="time" formControlName="endTime" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'FORM.COURT_ID' | translate }}</mat-label>
+      <input matInput formControlName="courtId" />
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">
+      {{ 'FORM.CANCEL' | translate }}
+    </button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+      {{ 'FORM.ADD' | translate }}
+    </button>
+  </mat-dialog-actions>
+</form>
