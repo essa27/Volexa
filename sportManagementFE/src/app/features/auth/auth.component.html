@@ -1,0 +1,37 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <img src="assets/logo.png" alt="Volexa Logo" class="logo-animated" />
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="form-wrapper">
+      <div class="input-group">
+        <mat-icon class="input-icon">person</mat-icon>
+        <input
+          type="text"
+          name="username"
+          [placeholder]="'AUTH.USERNAME' | translate"
+          [(ngModel)]="loginData.username"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <mat-icon class="input-icon">lock</mat-icon>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          [placeholder]="'AUTH.PASSWORD' | translate"
+          [(ngModel)]="loginData.password"
+          required
+        />
+      
+        <mat-icon class="toggle-icon" (click)="togglePassword()">
+          {{ showPassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="!loginForm.form.valid">
+        {{ 'AUTH.LOGIN' | translate }}
+      </button>
+    </form>
+  </div>
+</div>

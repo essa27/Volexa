@@ -1,0 +1,142 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.account-background {
+  min-height: 100vh;
+  background-image: url('/assets/profile-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.account-container {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95); // semi-transparent background
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  // Optional blur effect
+  backdrop-filter: blur(5px);
+}
+
+  
+  .account-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #55b0ff;
+  }
+  
+  .edit-button {
+    background-color: #FFE220;
+    color: black;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .account-form {
+    text-align: left;
+  }
+  
+  .form-group {
+    margin-bottom: 0.7rem;
+  }
+  
+  .upload-photo input {
+    background: #ffffff;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+  
+  input[readonly] {
+    background-color: #f0f0f0;
+  }
+  
+  .save-button {
+    background-color: #55b0ff;
+    color: white;
+    padding: 0.6rem 2rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+  }
+  .upload-photo {
+    text-align: center;
+  }
+  
+  .upload-button {
+    background-color: #55b0ff;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-button:hover {
+    background-color: #3596dc;
+  }
+  
+  .preview-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #55b0ff;
+  }
+  

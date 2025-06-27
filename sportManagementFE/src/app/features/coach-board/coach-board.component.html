@@ -1,0 +1,63 @@
+<div class="strategy-background">
+  <div class="strategy-wrapper">
+    <!-- ✅ Toolbar only for coach/admin -->
+    <div class="strategy-toolbar" *ngIf="isCoachOrAdmin()">
+      <div class="tool-buttons">
+        <label class="color-label">
+          {{ 'STRATEGY.PEN_COLOR' | translate }}:
+          <input type="color" [(ngModel)]="penColor" />
+        </label>
+
+        <label class="slider-label">
+          {{ 'STRATEGY.PEN_WIDTH' | translate }}:
+          <input type="range" min="1" max="20" [(ngModel)]="penWidth" />
+        </label>
+
+        <label class="slider-label">
+          {{ 'STRATEGY.ERASER_SIZE' | translate }}:
+          <input type="range" min="5" max="50" [(ngModel)]="eraserSize" />
+        </label>
+
+        <button mat-raised-button color="primary" (click)="setMode('draw')">
+          {{ 'STRATEGY.DRAW' | translate }}
+        </button>
+
+        <button mat-raised-button color="accent" (click)="setMode('erase')">
+          {{ 'STRATEGY.ERASE' | translate }}
+        </button>
+
+        <button mat-raised-button color="warn" (click)="clearCanvas()">
+          {{ 'STRATEGY.CLEAR' | translate }}
+        </button>
+
+        <button mat-raised-button color="primary" (click)="saveCanvas()">
+          {{ 'STRATEGY.SAVE' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Canvas is always visible -->
+    <div class="court-wrapper">
+      <canvas #bgCanvas class="bg-canvas"></canvas>
+      <canvas #strategyCanvas class="draw-canvas"></canvas>
+    </div>
+
+    <div class="strategy-list">
+      <h2>{{ 'STRATEGY.SAVED_STRATEGIES' | translate }}</h2>
+      <div class="strategy-cards">
+        <div *ngFor="let strategy of strategies" class="strategy-card">
+          <a [href]="getImageUrl(strategy.filename)" target="_blank">
+            <img [src]="getImageUrl(strategy.filename)" alt="{{ strategy.name }}" />
+          </a>
+
+          <h3>{{ strategy.name }}</h3>
+          <p>{{ strategy.uploadedAt | date:'short' }}</p>
+
+          <button *ngIf="isCoachOrAdmin()" mat-stroked-button color="warn" (click)="deleteStrategy(strategy.id)">
+            {{ 'STRATEGY.DELETE' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

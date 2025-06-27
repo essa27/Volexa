@@ -1,0 +1,196 @@
+.calendar-wrapper {
+  display: flex;
+  background: #f6f8fc;
+  min-height: 90vh;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+// Sidebar
+.calendar-sidebar {
+  background: #55B0FF;
+  padding: 1rem;
+  color: #fff;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover,
+      &.active {
+        background: #ffffff33;
+      }
+    }
+  }
+}
+
+// Calendar Area
+.calendar-main {
+  flex: 1;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+// Header Section (fixed)
+.calendar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .month-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #55B0FF;
+    }
+
+    button {
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+
+      &:hover {
+        background: #55b0ff;
+        color: #fff;
+      }
+    }
+  }
+
+  .view-switch {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    button {
+      border: none;
+      background: #eef1f5;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: #55b0ff;
+        color: #fff;
+      }
+
+      &.add-btn {
+        background: #ffe220;
+        font-weight: bold;
+
+        &:hover {
+          background: #fcd400;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+// Event Details
+.calendar-details {
+  margin-top: 2rem;
+
+  h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #55b0ff;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// Delete Button
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #e74c3c;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    color: #c0392b;
+  }
+}
+
+// Calendar Fixes
+::ng-deep .cal-month-view,
+::ng-deep .cal-month-view .cal-days {
+  background-color: #fff !important;
+}
+
+::ng-deep .cal-event-title {
+  white-space: nowrap;
+}
+
+::ng-deep .cal-day-cell {
+  background-color: #fff !important;
+  border: 1px solid #eee !important;
+}
+
+::ng-deep .cal-day-cell.cal-today {
+  background: #e3f2fd !important;
+}
+
+::ng-deep .cal-open-day-events {
+  display: none !important;
+  height: 0 !important;
+  visibility: hidden;
+}
+.coach-name {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 4px;
+  display: block; 
+  position: relative;
+  padding-left: 18px;
+}
+
+.coach-name::before {
+  content: '👤';  
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+

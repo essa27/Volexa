@@ -1,0 +1,284 @@
+{
+    "TITLE": "Volleyball Management",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "ATHLETES": "Athletes",
+    "COURTS": "Courts",
+  
+    "NAV": {
+      "HOME": "Home",
+      "ABOUT": "About",
+      "BOOKING": "Court Booking",
+      "SCORES": "Match Scores",
+      "ATHLETES": "Athletes",
+      "COACH_BOARD": "Coach Board",
+      "MANAGE_USERS": "Manage Users",
+      "MY_ACCOUNT": "My Account",
+      "LOGIN_SIGNUP": "Login",
+      "LOGOUT": "Logout"
+    },
+  
+    "HOME": {
+      "HEADER_TITLE1": "Manage Your Game.",
+      "HEADER_TITLE2": "Master the Court.",
+      "HEADER_DESC": "Book volleyball courts, manage teams, and streamline events — all in one place.",
+      "FEATURES_TITLE": "What You Can Do",
+      "FEATURES_DESC": "All-in-one platform to manage your volleyball team, court, and schedule.",
+      "FEATURE_COURT_TITLE": "Court Reservations",
+      "FEATURE_COURT_DESC": "Easily reserve volleyball courts by time slot, team, or coach preferences.",
+      "FEATURE_ATHLETE_TITLE": "Athlete Management",
+      "FEATURE_ATHLETE_DESC": "Store and track athlete details, progress, and participation.",
+      "FEATURE_SCORES_TITLE": "Match Scores",
+      "FEATURE_SCORES_DESC": "View match scores and final results.",
+      "FEATURE_BOARD_TITLE": "Coach Board",
+      "FEATURE_BOARD_DESC": "Plan strategies, draw on the volleyball court.",
+      "HIGHLIGHT_TITLE": "Built for Players. Powered by Coaches.",
+      "HIGHLIGHT_DESC": "Everything you need to run your volleyball club — all in one simple platform."
+    },
+  
+    "COMMON": {
+      "MORE": "More"
+    },
+ "ABOUT": {
+  "TITLE": "About Us",
+  "DESCRIPTION": "Volexa is your all-in-one platform to manage volleyball court bookings, athletes, schedules, and performance—streamlined and smart.",
+  "WHY_TITLE": "Why We Built Volexa",
+  "WHY_SUBTITLE": "We know the struggles of organizing practices, tracking athlete performance, and booking courts. Volexa was built to simplify and elevate how teams and coaches manage their operations.",
+  "GALLERY": {
+    "PLANNING": "Athletes Planning",
+    "COACHING": "Coaching Session",
+    "SCHEDULING": "Team Scheduling"
+  },
+  "FOR_COACHES_TITLE": "Built for Coaches & Athletes",
+  "FOR_COACHES_DESC": "From athlete stats to attendance, Volexa gives you real-time data at your fingertips. No more spreadsheets or guesswork—just clarity and control.",
+  "COURT_BOOKING_TITLE": "Easy Court Booking",
+  "COURT_BOOKING_DESC": "Book volleyball courts in seconds—sorted by availability, team, or coach. Less scheduling chaos, more play time.",
+  "VALUES_TITLE": "Our Core Values",
+  "VALUES": {
+    "VOLLEYBALL_TITLE": "Built for Volleyball",
+    "VOLLEYBALL_DESC": "Every feature is tailored for the sport we love.",
+    "SIMPLE_TITLE": "Smart & Simple",
+    "SIMPLE_DESC": "Clean design. Powerful features. No learning curve.",
+    "FAST_TITLE": "Fast & Reliable",
+    "FAST_DESC": "Everything runs smooth, so your team runs smoother."
+  }
+},
+"FORM": {
+  "TITLE": "Title",
+  "DATE": "Date",
+  "START_TIME": "Start Time",
+  "END_TIME": "End Time",
+  "COURT_ID": "Court",
+  "CANCEL": "Cancel",
+  "ADD": "Add",
+  "ERROR_END_BEFORE_START": "❌ End time must be after start time.",
+  "SUCCESS": "✅ Reservation saved successfully!",
+  "FAILURE": "❌ Reservation failed. Please try again.",
+  "CONFLICT": "❌ Conflict: That time slot is already booked.",
+  "CLOSE": "Close"
+},
+"SCORES": {
+    "DATE": "Date",
+    "TEAMS": "Teams",
+    "POINTS": "Points",
+    "SETS": "Sets",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+    "ADD_MATCH": "Add Match",
+    "PLACEHOLDER_TEAM_A": "Team A",
+    "PLACEHOLDER_TEAM_B": "Team B",
+    "SAVE_SUCCESS": " Match saved!",
+    "SAVE_ERROR": "Failed to save match.",
+    "DELETE_SUCCESS": " Match deleted!",
+    "DELETE_ERROR": " Failed to delete match.",
+     "NO_DATA": "No match scores available. Please log in to view or add results."
+},
+"STRATEGY": {
+  "PEN_COLOR": "Pen Color",
+  "PEN_WIDTH": "Pen Width",
+  "ERASER_SIZE": "Eraser Size",
+  "DRAW": "Draw",
+  "ERASE": "Erase",
+  "CLEAR": "Clear",
+  "SAVE": "Save",
+  "DELETE": "Delete",
+  "SAVED_STRATEGIES": "Your Saved Strategies",
+  "ENTER_NAME": "Enter a name for this strategy:",
+  "NAME_REQUIRED": "Strategy name is required.",
+  "SAVE_SUCCESS": " Strategy saved!",
+  "UPLOAD_FAILED": " Upload failed: ",
+  "CONFIRM_DELETE": "Delete this strategy?",
+  "DELETE_SUCCESS": " Strategy deleted",
+  "DELETE_FAILED": " Delete failed"
+},
+
+"NOTIFICATIONS": {
+    "ADD": "Add",
+    "TITLE": "Notifications",
+    "MARK_ALL_READ": "Mark all as read",
+    "DELETE_TOOLTIP": "Delete notification",
+    "VIEW_ALL": "View All",
+    "SHOW_LESS": "Show Less",
+    "CREATE_TITLE": "Create Notification",
+    "PLACEHOLDER": "Notification message",
+    "CANCEL": "Cancel",
+    "PERMISSION_DENIED": "You do not have permission to send notifications.",
+    "COACH": "Coach"
+  },
+  "ACCOUNT": {
+  "EDIT_PROFILE": "Edit Profile",
+  "NAME": "Name",
+  "AGE": "Age",
+  "EMAIL": "Email",
+  "CHOOSE_PHOTO": "Choose Photo",
+  "SAVE_CHANGES": "Save Changes",
+  "PLACEHOLDER_NAME": "Enter your name",
+  "PLACEHOLDER_AGE": "Enter your age",
+  "PLACEHOLDER_EMAIL": "Enter your email",
+  "ERROR_REQUIRED_FIELDS": "Please fill out all required fields.",
+  "ERROR_UPDATE_FAIL": "Failed to update profile.",
+  "ERROR_INVALID_IMAGE": "Please select a valid image file."
+},
+"AUTH": {
+  "USERNAME": "User Id",
+  "PASSWORD": "Password",
+  "LOGIN": "Log In",
+  "SHOW_PASSWORD": "Show Password",
+  "HIDE_PASSWORD": "Hide Password",
+  "LOGIN_FAILED": "Login failed"
+},
+"USERS": {
+  "CONFIRM_DELETE": "Are you sure you want to delete this user?",
+  "TITLE": "Manage Users",
+  "ADD": "Add New User",
+  "ID": "ID",
+  "USERNAME": "Username",
+  "EMAIL": "Email",
+  "ROLE": "Role",
+  "ACTIONS": "Actions",
+  "DELETE": "Delete",
+  "DELETE_FAILED": "Failed to delete user. They may be linked to other data.",
+  "DELETE_SUCCESS": "User deleted successfully.",
+  "DELETE_CONFLICT": "This user cannot be deleted because related data exists."
+},
+"REGISTER": {
+  "TITLE": "Register User",
+  "USERNAME": "Username",
+  "EMAIL": "Email",
+  "PASSWORD": "Password",
+  "TOGGLE_PASSWORD": "Toggle Password",
+  "SELECT_ROLE": "Select Role",
+  "ROLE_ATHLETE": "Athlete",
+  "ROLE_COACH": "Coach",
+  "ROLE_ADMIN": "Admin",
+  "SUBMIT": "Register",
+  "SUCCESS": "User registered successfully!",
+  "FAILED": "Registration failed. Please check your input or try again later."
+},
+
+"CALENDAR": {
+    "MONTH": "Month",
+    "WEEK": "Week",
+    "DAY": "Day",
+    "ADD": "+ Add",
+    "DELETE": "Delete",
+    "DELETE_CONFIRM": "Delete reservation \"{{title}}\"?",
+    "DELETE_ERROR": "Failed to delete reservation",
+    "DELETE_MISSING_ID": "Missing reservation ID. Cannot delete.",
+    "LOAD_ERROR": "Failed to load reservations.",
+    "RESERVED_BY": "Reserved by",
+    "UNKNOWN": "Unknown",
+    "TO": "to",
+    "COURT": "Court",
+    "NOTIFY": "{{title}} starts in one hour",
+    "NO_EVENTS":  "No reservations for this day."
+  },
+  "ATHLETE": {
+  "SEARCH_PLACEHOLDER": "🔍 Search athlete by name",
+  "ADD_BUTTON": "Add New Athlete",
+  "CHANGE_PHOTO":"Change photo",
+  "FULL_NAME": "Full Name",
+  "POSITION": "Position",
+  "POSITION_PLACEHOLDER": "e.g. Setter",
+  "POSITIONS": {
+    "SETTER": "Setter",
+    "LIBERO": "Libero",
+    "MIDDLE": "Middle",
+    "HITTER": "Hitter"
+  },
+  "TEAM": "Team",
+  "TEAM_PLACEHOLDER": "e.g. Team A",
+  "LEVEL": "Level",
+  "LEVEL_JUNIOR": "Junior",
+  "LEVEL_SENIOR": "Senior",
+  "AGE": "Age",
+  "HEIGHT": "Height ",
+  "HEIGHT_PLACEHOLDER": "Height in cm",
+  "WEIGHT": "Weight ",
+  "WEIGHT_PLACEHOLDER": "Weight in kg",
+  "EMAIL": "Email",
+  "ATTENDANCE": "Attendance",
+  "ATTENDANCE_PLACEHOLDER": "0–100",
+  "CHOOSE_PHOTO": "Choose Photo",
+  "UPLOAD_IMAGE": "Upload Image",
+  "SAVE_BUTTON": "Save Athlete",
+  "VIEW": "View",
+  "DELETE_BUTTON": "Delete",
+  "BACK": "← Back to Athletes",
+  "EDIT_PROFILE": "Edit Profile",
+  "SAVE_PROFILE": "Save",
+  "PERSONAL_INFO": "Personal Info",
+  "MONTHLY_ATTENDANCE": "Monthly Attendance",
+  "VALUE": "Value",
+  "MEDICAL_TITLE": "Medical",
+  "MEDICAL_DESC": "Upload & manage medical certificates and clearances here.",
+  "VIEW_MEDICAL": "View Medical Document",
+  "DOWNLOAD_MEDICAL": "Download Medical",
+  "REMOVE_MEDICAL": "Remove",
+  "CONTRACT_TITLE": "Contract",
+  "CONTRACT_DESC": "Upload & manage athlete contracts here. Only visible to coaches.",
+  "VIEW_CONTRACT": "View Contract",
+  "DOWNLOAD_CONTRACT": "Download Contract",
+  "REMOVE_CONTRACT": "Remove",
+  "MATCH_PERFORMANCE": "Match Performance",
+  "MATCHES_PLAYED": "Matches Played",
+  "POINTS": "Points",
+  "BLOCKS": "Blocks",
+  "SERVES": "Serves",
+  "SCROLL_DOWN": "Scroll down",
+  "SAVE_SUCCESS": "{{name}}'s changes have been saved!",
+  "VIEW_ERROR": "⚠️ Athlete ID is invalid or missing.",
+  "ATTENDANCE_TITLE": "Attendance",
+  "MONTHLY_VALUE": "Monthly Attendance",
+  "PERFORMANCE_TITLE": "Match Performance",
+  "SAVE": "Save",
+  "WEEK_1": "Week 1",
+  "WEEK_2": "Week 2",
+  "WEEK_3": "Week 3",
+  "WEEK_4": "Week 4",
+  "CHOOSE_FILE": "Choose file",
+  "NO_FILE": "No file chosen",
+  "ATTENDANCE_LABEL": "Attendance",
+  "WEEK_1_LABEL": "WEEK 1",
+  "WEEK_2_LABEL": "WEEK 2",
+  "WEEK_3_LABEL": "WEEK 3",
+  "WEEK_4_LABEL": "WEEK 4"
+}
+
+
+  
+  
+
+}
+
+
+
+  
+
+
+
+
+  
+  
